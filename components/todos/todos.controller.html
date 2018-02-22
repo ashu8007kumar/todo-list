@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Todo:-</h1>
+    <div class="input-group">
+        <input class="form-control" type="text" placeholder="Enter Todo's" ng-model="vm.description">
+        <div class="input-group-btn">
+            <button class="btn btn-default" ng-click="vm.addTask()" type="submit">Add Task</button>
+        </div>
+    </div>
+    <div class="row" ng-show="vm.tasksToDo.length >=1">
+        <div class="checkbox">
+            <label>
+                <input id="selectAll" type="checkbox" ng-model="vm.selectAll" ng-change="vm.selectDeselectAll(vm.selectAll)">Select All</label>
+        </div>
+        <h3>List of tasks:-</h1>
+            <div ng-repeat="task in vm.tasksToDo track by $index">
+                <div class="checkbox">
+                    <label>
+                        <input id="checked{{$index}}" type="checkbox" ng-model="task.checked" ng-change="toggleTask(task)">
+                        <h4 ng-class="{'checked-name': task.checked}">{{task.description}}</h4>
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-danger" ng-click="vm.deleteTasks()">Delete Tasks</button>
+    </div>
+</div>
